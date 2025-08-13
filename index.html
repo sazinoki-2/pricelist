@@ -83,17 +83,27 @@
             font-weight: bold;
         }
 
-        .discount-badge {
+        /* コンサルティング用の統一バッジスタイル */
+        .consulting-discount-badge {
             position: absolute;
-            top: -10px;
-            left: 20px;
-            background: linear-gradient(45deg, #00ff00, #32cd32);
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #00bfff, #40e0d0);
             color: white;
-            padding: 5px 15px;
+            padding: 6px 12px;
             border-radius: 15px;
             font-size: 0.8em;
             font-weight: bold;
-            animation: pulse 2s infinite;
+            z-index: 10;
+            box-shadow: 0 3px 10px rgba(0, 191, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .consulting-discount-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.6);
         }
 
         @keyframes pulse {
@@ -330,36 +340,49 @@
             margin-right: 8px;
         }
 
-        /* イラスト用のバッジスタイル */
+        /* 割引バッジスタイル - 水色ボタン */
         .discount-badge {
             position: absolute;
-            top: -10px;
-            right: 20px;
-            background: linear-gradient(45deg, #ff4500, #ff6347);
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, #00bfff, #40e0d0);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
             font-weight: bold;
-            animation: pulse 2s infinite;
             z-index: 10;
-            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 191, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .discount-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.6);
         }
 
         .popular-badge {
             position: absolute;
-            top: -10px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             background: linear-gradient(45deg, #ff69b4, #ff1493);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
             font-weight: bold;
             z-index: 10;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(255, 105, 180, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .popular-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.6);
         }
 
         .pricing-card.popular {
@@ -629,7 +652,7 @@
         <div class="pricing-grid">
             <!-- 戦略セッション -->
             <div class="pricing-card">
-                <div class="discount-badge">5%OFF</div>
+                <div class="consulting-discount-badge">5%OFF</div>
                 <div class="card-header">
                     <div class="card-icon">🧠</div>
                     <h3 class="card-title">戦略セッション</h3>
@@ -669,7 +692,7 @@
             <!-- 顧問契約 -->
             <div class="pricing-card featured">
                 <div class="featured-badge">人気!</div>
-                <div class="discount-badge">特別価格</div>
+                <div class="consulting-discount-badge">特別価格</div>
                 <div class="card-header">
                     <div class="card-icon">👑</div>
                     <h3 class="card-title">エグゼクティブ顧問</h3>
@@ -708,7 +731,7 @@
 
             <!-- プロジェクトベース -->
             <div class="pricing-card">
-                <div class="discount-badge">成功報酬</div>
+                <div class="consulting-discount-badge">成功報酬</div>
                 <div class="card-header">
                     <div class="card-icon">🚀</div>
                     <h3 class="card-title">プロジェクト支援</h3>
@@ -747,7 +770,7 @@
 
             <!-- 専門サービス -->
             <div class="pricing-card">
-                <div class="discount-badge">制作込み</div>
+                <div class="consulting-discount-badge">制作込み</div>
                 <div class="card-header">
                     <div class="card-icon">🛠️</div>
                     <h3 class="card-title">専門制作サービス</h3>
