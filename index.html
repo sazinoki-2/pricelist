@@ -454,7 +454,7 @@
         }
 
         .flow-container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -478,14 +478,14 @@
 
         .flow-step {
             width: 100%;
-            max-width: 600px;
+            max-width: 900px;
         }
 
         .step-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(25px);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 25px 50px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.08),
@@ -495,6 +495,10 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 160px;
         }
 
         .step-card::before {
@@ -534,12 +538,12 @@
         .step-title {
             font-size: 1.5em;
             font-weight: 600;
-            color: #333;
+            color: #00bfff;
             margin-bottom: 10px;
         }
 
         .step-summary {
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 20px;
             line-height: 1.5;
         }
@@ -548,12 +552,13 @@
             background: linear-gradient(135deg, #ff69b4, #ff1493);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 40px;
             border-radius: 25px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            min-width: 160px;
         }
 
         .expand-btn:hover {
@@ -607,12 +612,12 @@
 
         .method h4 {
             margin-bottom: 8px;
-            color: #333;
+            color: #00bfff;
             font-size: 1.1em;
         }
 
         .method p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.9em;
         }
 
@@ -643,12 +648,12 @@
 
         .contract-type h4 {
             margin-bottom: 8px;
-            color: #333;
+            color: #00bfff;
             font-size: 1em;
         }
 
         .contract-type p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.85em;
         }
 
@@ -668,7 +673,7 @@
         }
 
         .delivery-info h4, .payment-methods h4 {
-            color: #333;
+            color: #00bfff;
             margin-bottom: 10px;
             font-size: 1.1em;
         }
@@ -687,7 +692,7 @@
             padding: 10px 18px;
             border-radius: 24px;
             font-size: 0.9em;
-            color: #333;
+            color: rgba(255, 255, 255, 0.9);
             box-shadow: inset 0 1px 0 rgba(64, 224, 208, 0.1);
             transition: all 0.3s ease;
         }
@@ -703,7 +708,7 @@
             backdrop-filter: blur(15px);
             color: #40e0d0;
             text-decoration: none;
-            padding: 14px 28px;
+            padding: 14px 45px;
             border-radius: 28px;
             font-weight: 600;
             border: 2px solid rgba(64, 224, 208, 0.3);
@@ -711,6 +716,7 @@
             box-shadow: 
                 0 8px 32px rgba(64, 224, 208, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            min-width: 200px;
         }
 
         .consult-form-btn:hover, .flow-cta-btn:hover {
@@ -745,12 +751,13 @@
 
         .flow-cta-btn {
             font-size: 1.1em;
-            padding: 15px 35px;
+            padding: 16px 50px;
+            min-width: 250px;
         }
 
         .step-details ul {
             text-align: left;
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
         }
 
@@ -765,7 +772,7 @@
             }
 
             .step-card {
-                padding: 20px;
+                padding: 20px 30px;
             }
 
             .step-icon {
@@ -801,7 +808,7 @@
             }
 
             .step-card {
-                padding: 15px;
+                padding: 15px 25px;
             }
 
             .step-icon {
