@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イラスト料金表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0a2e 0%, #16213e 25%, #0f3460 50%, #533a7d 75%, #6a4c93 100%);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .pricing-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00bfff, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            opacity: 0.8;
+            margin-bottom: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #ff69b4;
+            position: relative;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff4500, #ff6347);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00bfff;
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95em;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            flex: 1;
+        }
+
+        .service-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .current-price {
+            font-weight: bold;
+            color: #ff69b4;
+            font-size: 1.1em;
+        }
+
+        .original-price {
+            font-size: 0.8em;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 2px;
+        }
+
+        .card-footer {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #00bfff, #40e0d0);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.4);
+        }
+
+        .popular .order-btn {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+        }
+
+        .popular .order-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        /* 注意事項 */
+        .pricing-notes {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .notes-title {
+            font-size: 1.2em;
+            color: #00bfff;
+            margin-bottom: 15px;
+        }
+
+        .notes-list {
+            list-style: none;
+        }
+
+        .notes-list li {
+            padding: 5px 0;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .notes-list li::before {
+            content: "💎 ";
+            margin-right: 8px;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-title {
+                font-size: 2em;
+            }
+            
+            .pricing-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-section">
+        <h2 class="pricing-title">Illustration Pricing</h2>
+        <p class="pricing-subtitle">アニメ系イラスト制作料金表 〜 あなたの想像を形に 〜</p>
+        
+        <div class="pricing-grid">
+            <!-- アイコン・立ち絵 -->
+            <div class="pricing-card">
+                <div class="discount-badge">33% OFF</div>
+                <div class="card-header">
+                    <div class="card-icon">🎨</div>
+                    <h3 class="card-title">アイコン・立ち絵</h3>
+                    <p class="card-description">SNS用アイコンから全身立ち絵まで</p>
+                </div>
+                <ul class="price-list">
+                    <li class="price-item">
+                        <span class="service-name">アイコン</span>
+                        <div class="service-price">
+                            <div class="original-price">¥14,700</div>
+                            <div class="current-price">¥9,800</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">バストアップ</span>
+                        <div class="service-price">
+                            <div class="original-price">¥18,000</div>
+                            <div class="current-price">¥12,000</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">カウボーイショット</span>
+                        <div class="service-price">
+                            <div class="original-price">¥33,000</div>
+                            <div class="current-price">¥22,000</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">全身立ち絵</span>
+                        <div class="service-price">
+                            <div class="original-price">¥37,500</div>
+                            <div class="current-price">¥25,000</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">全身立ち絵（背景込み）</span>
+                        <div class="service-price">
+                            <div class="current-price">¥39,800〜</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <p style="font-size: 0.8em; opacity: 0.7; margin-bottom: 15px;">※差分・立ち絵パーツはパーツ数に応じて別途ご相談</p>
+                    <a href="#" class="order-btn">相談・依頼する</a>
+                </div>
+            </div>
+
+            <!-- サムネイル・バナー -->
+            <div class="pricing-card popular">
+                <div class="discount-badge">33% OFF</div>
+                <div class="popular-badge">人気!</div>
+                <div class="card-header">
+                    <div class="card-icon">📹</div>
+                    <h3 class="card-title">サムネイル・バナー</h3>
+                    <p class="card-description">YouTube・ブログ・SNS用デザイン</p>
+                </div>
+                <ul class="price-list">
+                    <li class="price-item">
+                        <span class="service-name">YouTubeサムネイル</span>
+                        <div class="service-price">
+                            <div class="original-price">¥8,970</div>
+                            <div class="current-price">¥5,980</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">ブログヘッダー</span>
+                        <div class="service-price">
+                            <div class="original-price">¥12,720</div>
+                            <div class="current-price">¥8,480</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">SNSバナー</span>
+                        <div class="service-price">
+                            <div class="original-price">¥10,470</div>
+                            <div class="current-price">¥6,980</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">広告バナー</span>
+                        <div class="service-price">
+                            <div class="original-price">¥19,200</div>
+                            <div class="current-price">¥12,800</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <p style="font-size: 0.8em; opacity: 0.7; margin-bottom: 15px;">※主にテキストデザイン・エフェクト・背景模様等<br>キャラクターイラストは別料金</p>
+                    <a href="#" class="order-btn">相談・依頼する</a>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-header">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">商業・企業案件</h3>
+                    <p class="card-description">商用利用・大型プロジェクト・個人プロジェクト含む対応</p>
+                </div>
+                <ul class="price-list">
+                    <li class="price-item">
+                        <span class="service-name">キャラクターデザイン</span>
+                        <div class="service-price">
+                            <div class="original-price">¥120,000</div>
+                            <div class="current-price">¥80,000〜</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">ゲームキービジュアル</span>
+                        <div class="service-price">
+                            <div class="original-price">¥147,000</div>
+                            <div class="current-price">¥98,000〜</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">表紙・パッケージ制作</span>
+                        <div class="service-price">
+                            <div class="original-price">¥120,000</div>
+                            <div class="current-price">¥80,000〜</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">アニメーション用設定画</span>
+                        <div class="service-price">
+                            <div class="current-price">¥120,000〜</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#" class="order-btn">相談・依頼する</a>
+                </div>
+            </div>
+
+            <!-- オプション・特別対応 -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">オプション・特別対応</h3>
+                    <p class="card-description">追加サービス・カスタマイズ</p>
+                </div>
+                <ul class="price-list">
+                    <li class="price-item">
+                        <span class="service-name">表情差分（1つ）</span>
+                        <div class="service-price">
+                            <div class="current-price">¥3,000〜</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">ポーズ差分（1つ）</span>
+                        <div class="service-price">
+                            <div class="current-price">¥6,000〜</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">急ぎ対応（3日以内）</span>
+                        <div class="service-price">
+                            <div class="current-price">+50%</div>
+                        </div>
+                    </li>
+                    <li class="price-item">
+                        <span class="service-name">NFT・ブロックチェーン化対応</span>
+                        <div class="service-price">
+                            <div class="original-price">¥15,000</div>
+                            <div class="current-price">¥9,800</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#" class="order-btn">相談・依頼する</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-notes">
+            <h3 class="notes-title">ご利用案内</h3>
+            <ul class="notes-list">
+                <li>全て税込価格です。お支払いは前金50%、完成時50%の分割払い可能</li>
+                <li>修正は2回まで無料。3回目以降は各注文料金の50%〜</li>
+                <li>商用利用の場合は別途ライセンス料が発生する場合があります</li>
+                <li>納期は通常2週間〜。急ぎの場合はご相談ください</li>
+                <li>SKEBでのご依頼も受け付けております（¥21,000〜）</li>
+                <li>企業案件・大型プロジェクトは個別お見積もりいたします</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
