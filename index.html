@@ -412,6 +412,26 @@
             scroll-behavior: smooth;
         }
 
+        /* フローセクションジャンプボタン */
+        .flow-jump-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00bfff, #40e0d0);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .flow-jump-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.4);
+            background: linear-gradient(45deg, #40e0d0, #00bfff);
+        }
+
         /* フッター */
         .footer {
             background: linear-gradient(180deg, #000000 0%, #333333 100%);
@@ -431,11 +451,11 @@
         /* フローセクションのスタイル */
         .flow-section {
             background: linear-gradient(135deg, 
-                rgba(64, 224, 208, 0.1) 0%, 
-                rgba(255, 182, 193, 0.1) 25%, 
-                rgba(173, 216, 230, 0.1) 50%, 
-                rgba(221, 160, 221, 0.1) 75%, 
-                rgba(240, 248, 255, 0.1) 100%);
+                rgba(72, 209, 204, 0.08) 0%, 
+                rgba(255, 192, 203, 0.08) 25%, 
+                rgba(173, 216, 230, 0.08) 50%, 
+                rgba(230, 230, 250, 0.08) 75%, 
+                rgba(255, 250, 205, 0.08) 100%);
             padding: 60px 20px;
             margin-top: 60px;
             overflow: hidden;
@@ -449,8 +469,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(255, 105, 180, 0.05) 0%, transparent 50%),
-                       radial-gradient(circle at 70% 30%, rgba(64, 224, 208, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 70%, rgba(255, 183, 178, 0.06) 0%, transparent 50%),
+                       radial-gradient(circle at 70% 30%, rgba(152, 251, 152, 0.06) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -466,8 +486,25 @@
             font-size: 2.5em;
             font-weight: 700;
             color: white;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .flow-subtitle {
+            text-align: center;
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .flow-description {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            opacity: 0.8;
         }
 
         .flow-steps {
@@ -485,7 +522,7 @@
         .step-card {
             backdrop-filter: blur(25px);
             border-radius: 20px;
-            padding: 25px 50px;
+            padding: 15px 50px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.08),
@@ -498,37 +535,51 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 160px;
+            min-height: 120px;
         }
 
-        /* STEP 1 - 薄いピンク */
+        /* STEP 1 - 水色 */
         .flow-step:nth-child(1) .step-card {
-            background: rgba(255, 182, 193, 0.15);
+            background: rgba(135, 206, 235, 0.4);
         }
 
-        /* STEP 2 - 薄い水色 */
+        /* STEP 2 - ライトグリーン */
         .flow-step:nth-child(3) .step-card {
-            background: rgba(173, 216, 230, 0.15);
+            background: rgba(144, 238, 144, 0.4);
         }
 
-        /* STEP 3 - 薄い黄緑 */
+        /* STEP 3 - 明るいピンク */
         .flow-step:nth-child(5) .step-card {
-            background: rgba(144, 238, 144, 0.15);
+            background: rgba(255, 182, 193, 0.4);
         }
 
-        /* STEP 4 - 薄い黄色 */
+        /* STEP 4 - エメラルドブルー */
         .flow-step:nth-child(7) .step-card {
-            background: rgba(255, 255, 224, 0.15);
+            background: rgba(64, 224, 208, 0.4);
         }
 
-        /* STEP 5 - 薄い紫 */
+        /* STEP 5 - エメラルドグリーン */
         .flow-step:nth-child(9) .step-card {
-            background: rgba(221, 160, 221, 0.15);
+            background: rgba(0, 201, 87, 0.4);
         }
 
-        /* STEP 6 - 薄いオレンジ */
+        /* STEP 6 - リッチゴールド（インタラクティブ） */
         .flow-step:nth-child(11) .step-card {
-            background: rgba(255, 218, 185, 0.15);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.6) 0%, rgba(255, 165, 0, 0.5) 50%, rgba(255, 223, 0, 0.6) 100%);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(255, 215, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .flow-step:nth-child(11) .step-card:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 165, 0, 0.7) 50%, rgba(255, 223, 0, 0.8) 100%);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 50px rgba(255, 215, 0, 0.5);
+            transform: translateY(-8px) scale(1.02);
         }
 
         .step-card::before {
@@ -560,28 +611,36 @@
         }
 
         .step-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 2.5em;
+            margin-bottom: 8px;
             line-height: 1;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            border: none;
             border-radius: 16px;
-            padding: 20px 30px;
+            padding: 10px 20px;
             display: inline-block;
         }
 
         .step-title {
-            font-size: 1.5em;
+            font-size: 1.3em;
             font-weight: 600;
             color: #00bfff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+        }
+
+        .step-divider {
+            width: 100px;
+            height: 1px;
+            background: white;
+            margin: 10px auto 15px auto;
+            opacity: 0.6;
         }
 
         .step-summary {
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 5px;
+            line-height: 1.4;
+            font-size: 0.9em;
         }
 
 
@@ -614,7 +673,7 @@
 
         .flow-arrow {
             font-size: 2em;
-            color: #ff69b4;
+            color: #87CEEB;
             text-align: center;
             margin: 10px 0;
             animation: pulse 2s infinite;
@@ -896,6 +955,11 @@
                     <li>企業案件・大型プロジェクトは個別お見積もりいたします</li>
                 </ul>
             </div>
+
+            <!-- フローセクションへのジャンプボタン -->
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#flow-section" class="flow-jump-btn">申込み〜納品までの流れを見る</a>
+            </div>
         </div>
     </div>
 
@@ -917,7 +981,7 @@
                 </div>
                 <ul class="price-list">
                     <li class="price-item">
-                        <span class="service-name">60分/初心者向けコーチング（提供スキル参照）</span>
+                        <span class="service-name">60分/各種初心者コーチング（▼提供スキル参照）</span>
                         <div class="service-price">
                             <div class="original-price">¥6,280</div>
                             <div class="current-price">¥2,980</div>
@@ -940,6 +1004,14 @@
                             <div class="discount-text">54%OFF</div>
                         </div>
                     </li>
+                    <li class="price-item">
+                        <span class="service-name">60分/ゲームコーチング</span>
+                        <div class="service-price">
+                            <div class="original-price">¥5,391</div>
+                            <div class="current-price">¥2,480</div>
+                            <div class="discount-text">54%OFF</div>
+                        </div>
+                    </li>
                 </ul>
                 <div class="card-footer">
                     <a href="#" class="consult-btn">相談orご依頼フォームへ</a>
@@ -959,7 +1031,7 @@
                         <span class="service-name">1ヶ月契約</span>
                         <div class="service-price">
                             <div class="original-price">¥150,000</div>
-                            <div class="current-price">¥98000</div>
+                            <div class="current-price">¥98,000</div>
                             <div class="discount-text">33%OFF</div>
                         </div>
                     </li>
@@ -979,6 +1051,19 @@
                             <div class="discount-text">55%OFF</div>
                         </div>
                     </li>
+                    <li class="price-item">
+                        <span class="service-name">プロジェクト業務委託</span>
+                        <div class="service-price">
+                            <div class="current-price">見積もりの50%(着手金)</div>
+                        </div>
+                    </li>
+                  
+                    <li class="price-item">
+                        <span class="service-name">目標未達時の保証</span>
+                        <div class="service-price">
+                            <div class="current-price" style="color: #00ff00;">成功報酬不要</div>
+                        </div>
+                    </li>
                 </ul>
                 <div class="card-footer">
                     <a href="#" class="consult-btn">相談orご依頼フォームへ</a>
@@ -994,27 +1079,33 @@
                 </div>
                 <ul class="price-list">
                     <li class="price-item">
-                        <span class="service-name">プロジェクト着手金</span>
+                        <span class="service-name">DAOコミュニティ立ち上げ</span>
                         <div class="service-price">
-                            <div class="current-price">見積の50%</div>
+                            <div class="original-price">¥152,400</div>
+                            <div class="current-price">¥120,000</div>
+                            <div class="discount-text">21%OFF</div>
                         </div>
                     </li>
                     <li class="price-item">
-                        <span class="service-name">成功時報酬</span>
+                        <span class="service-name">WEB3連携</span>
                         <div class="service-price">
-                            <div class="current-price">残り50%</div>
+                            <div class="original-price">¥101,600</div>
+                            <div class="current-price">¥80,000</div>
+                            <div class="discount-text">21%OFF</div>
                         </div>
                     </li>
                     <li class="price-item">
-                        <span class="service-name">売上連動報酬</span>
+                        <span class="service-name">DAO運営/モデレーター</span>
                         <div class="service-price">
-                            <div class="current-price">売上の5%</div>
+                            <div class="current-price">月額応相談</div>
                         </div>
                     </li>
                     <li class="price-item">
-                        <span class="service-name">目標未達時の保証</span>
+                        <span class="service-name">NFT制作</span>
                         <div class="service-price">
-                            <div class="current-price" style="color: #00ff00;">成功報酬不要</div>
+                            <div class="original-price">¥7,700</div>
+                            <div class="current-price">¥4,980</div>
+                            <div class="discount-text">35%OFF</div>
                         </div>
                     </li>
                 </ul>
@@ -1078,7 +1169,7 @@
                 <li>全て税込価格です。法人様は別途請求書対応可能</li>
                 <li>基本対応時間：平日9:00-15:00（緊急時は24時間以内返信）</li>
                 <li>主な対応方法：Discord、必要に応じてZoom対応</li>
-                <li>提供スキル：Web制作、マーケティング、TOKEN/DAO構築、サービス/商品開発、クラファン、コミュニティ運営</li>
+                <li>提供スキル：Web制作、マーケティング、TOKEN/DAO構築、サービス/商品開発、クラファン、コミュニティ運営、Splatoon3サモランコーチング(上位レベル)</li>
                 <li>オフライン対応：現地稼働 +¥2,980/時間 + 交通費実費</li>
                 <li>顧問契約にはコンサル・チャットサポート・緊急対応が含まれます</li>
                 <li>プロジェクト参画ご依頼の期間中はイラスト・Web制作・資料作成の稼働も含みます（基本対応時間内）</li>
@@ -1086,16 +1177,25 @@
             </ul>
         </div>
 
-        <!-- サービスフローセクション -->
+        </div>
+    </div>
+
+    <!-- サービスフローセクション -->
+    <div id="flow-section" class="service-section">
+        <div class="consulting-section">
+            <h2 class="section-title">Service Flow Process</h2>
+            <p class="section-subtitle">イラスト制作もコンサルティングも、原則下記の流れでお取引させていただきます</p>
+
         <div class="flow-section">
             <div class="flow-container">
-                <h2 class="flow-title">申込み-ご納品までのシンプル6STEP</h2>
+                <h3 class="flow-subtitle">申込み-ご納品までのシンプル6STEP</h3>
                 
                 <div class="flow-steps">
                     <!-- STEP 1: 無料相談 -->
                     <div class="flow-step" data-step="1">
                         <div class="step-card">
                             <div class="step-icon">💬 STEP1 🤝</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">無料相談</h3>
                             <p class="step-summary">テキストチャット無制限or音声20分無料でお気軽にご相談いただけます。プロジェクトの内容・予算などを詳しくお聞かせください。<br>（すべてのフェーズで「告知なしの料金請求」は一切ございませんのでご安心ください）</p>
                         </div>
@@ -1107,6 +1207,7 @@
                     <div class="flow-step" data-step="2">
                         <div class="step-card">
                             <div class="step-icon">📊 STEP2 💰</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">お見積り</h3>
                             <p class="step-summary">ヒアリング内容を基に、プロジェクトの規模や工数を算出し、詳細な見積もりやラフを作成いたします。<br>料金や期間についてもお気軽にご相談ください。</p>
                         </div>
@@ -1118,6 +1219,7 @@
                     <div class="flow-step" data-step="3">
                         <div class="step-card">
                             <div class="step-icon">📋 STEP3 ⚡</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">契約・仕様書</h3>
                             <p class="step-summary">プロジェクトの種類により発行するドキュメントが異なります。<br>単発案件又は注文価格100,000以上は契約書、必要に応じ詳細な仕様書を作成いたします。</p>
                         </div>
@@ -1129,6 +1231,7 @@
                     <div class="flow-step" data-step="4">
                         <div class="step-card">
                             <div class="step-icon">🛒 STEP4 ✅</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">ご注文</h3>
                             <p class="step-summary">見積もりと仕様書にご納得いただけましたら正式発注となります。<br>該当サービスについては着手金をお支払いいただきます。</p>
                         </div>
@@ -1140,6 +1243,7 @@
                     <div class="flow-step" data-step="5">
                         <div class="step-card">
                             <div class="step-icon">⚙️ STEP5 🔨</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">制作・実行</h3>
                             <p class="step-summary">イラスト・WEBサービスはヒアリング内容を基に制作を開始します。<br>コンサル案件やプロジェクト関係もこのタイミングでJOIN参画します。</p>
                         </div>
@@ -1151,6 +1255,7 @@
                     <div class="flow-step" data-step="6">
                         <div class="step-card">
                             <div class="step-icon">🎁 STEP6 💎</div>
+                            <div class="step-divider"></div>
                             <h3 class="step-title">納品・支払い</h3>
                             <p class="step-summary">イラスト・WEBサービスは制作物ご納品を以って、コンサル案件・プロジェクト関係は指定期間満了後、<br>残額をお支払いください。支払い方法はBTC、USDC/USDT、銀行振込に対応しております。</p>
                         </div>
